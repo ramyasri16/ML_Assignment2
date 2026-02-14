@@ -1,4 +1,4 @@
-#Credit Approval Prediction Dashboard
+Credit Approval Prediction Dashboard
 
 a. Problem Statement
 The objective of this project is to automate and streamline the credit card approval process. In the financial sector, evaluating credit applications manually is a resource-intensive task. By using supervised machine learning algorithms, this application predicts the outcome of a credit request (Approved + or Rejected -) based on historical applicant data. This enables faster, data-driven decision-making while minimizing human bias and error.
