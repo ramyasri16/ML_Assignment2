@@ -15,12 +15,14 @@ st.markdown("---")
 # Sidebar setup
 st.sidebar.title("App Controls")
 
+# Download button
 if os.path.exists('crx.csv'):
     with open("crx.csv", "rb") as f:
         st.sidebar.download_button(
             "Download Sample CSV",
             data=f,
-            file_name="sample_data.csv"
+            file_name="sample_data.csv",
+            mime="text/csv"
         )
 else:
     st.sidebar.info("Upload your own data to begin.")
@@ -36,6 +38,7 @@ if f:
     
     col_names = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15', 'target']
     
+    # 2. Load the data
     df = pd.read_csv(f, header=None, names=col_names, na_values="?")
     
     st.subheader("Data Preview")
@@ -43,7 +46,7 @@ if f:
 
     if st.button("Run Prediction"):
         try:
-            # 1. Handle Model Path (Checking both lowercase and Title_Case)
+            # Handle Model Path
             fname = selected_model.lower().replace(' ', '_') + ".pkl"
             alt_fname = selected_model.replace(' ', '_') + ".pkl"
             
@@ -56,16 +59,16 @@ if f:
             else:
                 model = joblib.load(path)
                 
-                # 2. Split features and label
+                # 3. Separate Features and Target
                 X = df.drop(columns=['target'])
                 y = df['target']
                 
-                # 3. Predict
+                # 4. Predict
                 preds = model.predict(X)
                 
                 st.success(f"Results for {selected_model}")
                 
-                # 4. Visualization Layout
+                # 5. Visualization Layout
                 left, right = st.columns(2)
                 
                 with left:
@@ -85,6 +88,6 @@ if f:
 
         except Exception as err:
             st.error(f"Something went wrong: {err}")
-            st.info("Ensure your model version matches the environment (Scikit-Learn 1.6.1)")
+            st.info("If you see a 'Feature Names' error, ensure your uploaded CSV has no header row.")
 else:
     st.write("Please upload the `crx.csv` file in the sidebar to run the analysis.")
