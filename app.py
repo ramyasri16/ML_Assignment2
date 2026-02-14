@@ -15,7 +15,6 @@ st.markdown("---")
 # Sidebar setup
 st.sidebar.title("App Controls")
 
-# Simple download for mentors
 if os.path.exists('crx.csv'):
     with open("crx.csv", "rb") as f:
         st.sidebar.download_button(
@@ -34,9 +33,9 @@ models = ["Random Forest", "Logistic Regression", "XGBoost", "KNN", "Decision Tr
 selected_model = st.sidebar.selectbox("Select ML Model", models)
 
 if f:
-    # Load and show data - using standard credit dataset column count
-    # We assign headers manually to avoid the "Feature Names" warning
-    col_names = [f'Col_{i}' for i in range(1, 16)] + ['target']
+    
+    col_names = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15', 'target']
+    
     df = pd.read_csv(f, header=None, names=col_names, na_values="?")
     
     st.subheader("Data Preview")
@@ -53,12 +52,11 @@ if f:
                 path = os.path.join("models", alt_fname)
 
             if not os.path.exists(path):
-                st.error(f"Model file not found in 'models' folder (Checked: {fname} and {alt_fname})")
+                st.error(f"Model file not found in 'models' folder.")
             else:
                 model = joblib.load(path)
                 
                 # 2. Split features and label
-                # Keep X as a DataFrame to satisfy "Feature Names" requirement
                 X = df.drop(columns=['target'])
                 y = df['target']
                 
@@ -82,7 +80,6 @@ if f:
                 with right:
                     st.write("**Metrics Report**")
                     metrics = classification_report(y, preds, output_dict=True)
-                    # Convert metrics to DataFrame for a clean table
                     report_df = pd.DataFrame(metrics).transpose()
                     st.table(report_df)
 
