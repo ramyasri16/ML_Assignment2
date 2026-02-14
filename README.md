@@ -21,23 +21,25 @@ Data Characteristics: The dataset contains a mix of categorical and continuous v
 c. Models Used
 Six machine learning models were trained and integrated into the dashboard. Below is the comparison of their performance on the testing set:
 
-Comparison Table: Evaluation Metrics
+### Comparison Table: Evaluation Metrics
 
-ML Model Name	Accuracy	AUC	Precision	Recall	F1	MCC
-Logistic Regression	0.85	0.92	0.84	0.87	0.85	0.70
-Decision Tree	0.82	0.81	0.81	0.82	0.81	0.63
-kNN	0.84	0.88	0.83	0.85	0.84	0.68
-Naive Bayes	0.79	0.89	0.74	0.88	0.80	0.60
-Random Forest	0.88	0.94	0.87	0.90	0.88	0.76
-XGBoost	0.89	0.95	0.88	0.91	0.89	0.78
+| ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Logistic Regression** | 0.833 | 0.894 | 0.836 | 0.824 | 0.830 | 0.667 |
+| **Decision Tree** | 0.768 | 0.768 | 0.757 | 0.779 | 0.768 | 0.537 |
+| **kNN** | 0.855 | 0.883 | 0.808 | 0.926 | 0.863 | 0.718 |
+| **Naive Bayes** | 0.754 | 0.830 | 0.698 | 0.882 | 0.779 | 0.527 |
+| **Random Forest** | 0.862 | 0.917 | 0.836 | 0.897 | 0.865 | 0.727 |
+| **XGBoost** | **0.961** | **0.975** | **0.961** | **0.961** | **0.961** | **0.921** |
 
 
-Observations on Model Performance
+### Observations on Model Performance
 
-ML Model Name	Observation about model performance
-Logistic Regression	Achieved solid performance as a baseline model; its high AUC suggests a very good ability to distinguish between classes.
-Decision Tree	Provided high interpretability but had the lowest AUC, suggesting it may be slightly overfitting to the training noise.
-kNN	Showed improved accuracy after numerical scaling; it effectively captured local patterns in the applicant features.
-Naive Bayes	Maintained high recall (0.88), making it effective at catching potential approvals, though it had lower overall precision.
-Random Forest	Demonstrated high stability and accuracy by aggregating multiple trees, significantly reducing variance compared to a single Decision Tree.
-XGBoost	Best Performer. It achieved the highest Accuracy (89%) and MCC (0.78), proving to be the most robust model for this specific dataset.
+| ML Model Name | Observation about model performance |
+| :--- | :--- |
+| **Logistic Regression** | Performed as a stable baseline with high AUC (0.894), indicating excellent class separation for a linear model. |
+| **Decision Tree** | Showed the lowest overall performance; likely due to its simplicity compared to the ensemble methods. |
+| **kNN** | Demonstrated excellent Recall (0.926); it is highly effective at identifying positive credit approval cases. |
+| **Naive Bayes** | Provided competitive recall but suffered from lower precision (0.698), leading to more false approval predictions. |
+| **Random Forest** | A very strong performer with a high F1-score (0.865), showing the power of bagging in reducing variance. |
+| **XGBoost** | **Overall Best Performer.** Achieved a superior Accuracy of 96.1% and an MCC of 0.921, significantly outperforming all other models through gradient boosting. |
