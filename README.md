@@ -1,5 +1,3 @@
-# 2025AA05854
-
 Credit Approval Prediction Dashboard
 
 a. Problem Statement
