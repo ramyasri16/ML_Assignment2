@@ -18,7 +18,7 @@ st.sidebar.title("App Controls")
 
 if os.path.exists('crx.csv'):
     with open("crx.csv", "rb") as f:
-        st.sidebar.download_button("Download Sample CSV", data=f, file_name="sample_data.csv")
+        st.sidebar.download_button("Download Sample CSV",data=f,file_name="crx.csv",mime="text/csv")
 
 f = st.sidebar.file_uploader("Choose a CSV file", type="csv")
 models = ["Random Forest", "Logistic Regression", "XGBoost", "KNN", "Decision Tree", "Naive Bayes"]
