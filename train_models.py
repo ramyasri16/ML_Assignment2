@@ -25,7 +25,7 @@ if not os.path.exists('models'):
 # The dataset has no headers, so we define them based on A1-A16 convention
 col_names = ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9', 'A10', 'A11', 'A12', 'A13', 'A14', 'A15', 'class']
 # Replace '?' with NaN immediately upon loading
-data = pd.read_csv('crx.data', header=None, names=col_names, na_values='?')
+data = pd.read_csv('crx.csv', header=None, names=col_names, na_values='?')
 
 # 2. Preprocessing
 
